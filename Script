@@ -1,0 +1,17 @@
+import urllib.request, urllib.parse, urllib.error
+import json
+from bs4 import BeautifulSoup
+import xml.etree.ElementTree as ET
+import ssl
+
+url = input('Enter - ')
+html = urllib.request.urlopen(url).read()
+dec_html=html.decode()
+soup = BeautifulSoup(dec_html, 'html.parser')
+#print(dec_html)
+print('Retrieved', len(html), 'characters')
+try:
+    js = json.loads(html)
+    print(js)
+except:
+    js = None
